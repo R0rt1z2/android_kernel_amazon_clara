@@ -1,0 +1,8 @@
+config MSTAR_SYSTEM
+	tristate "System"
+	select CRC32
+  default y
+
+config MSTAR_UTOPIA2K_MDEBUG
+	bool "UTOPIA2K_MDEBUG"
+  default n

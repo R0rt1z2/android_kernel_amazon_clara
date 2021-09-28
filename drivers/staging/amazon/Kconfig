@@ -1,0 +1,51 @@
+menu "Amazon"
+
+config AMAZON
+	bool "Amazon Drivers"
+
+	default N
+	---help---
+	  Enable support for various drivers needed on the Amazon Fire OS platform
+
+if AMAZON
+
+config AMAZON_SIGN_OF_LIFE
+	bool "Amazon Sign of Life"
+	default N
+	---help---
+          Use to log device boot and shutdown metrics.
+          This is a generic driver, the platform part is implemented
+          to do the real work.
+
+config AMAZON_SIGN_OF_LIFE_MSTAR
+	bool "Amazon Sign of Life MStar platform implementation"
+	depends on AMAZON_SIGN_OF_LIFE
+	default N
+	---help---
+        The life cycle is implemented on MStar platform to record
+        boot/shutdown information.
+
+
+config AMAZON_METRICS_LOG
+	bool "Amazon Metrics logger driver"
+	select RING_BUFFER
+	default n
+	---help---
+		Enable Amazon Metrics/Vitals logger driver
+
+config AMAZON_METRICS_LOG_TEST
+	tristate "Amazon Metrics logger driver test module"
+	depends on AMAZON_METRICS_LOG
+	default n
+	---help---
+		Enable Amazon Metrics/Vitals logger test module
+
+config AMAZON_SILENT_OTA_BACKLIGHT
+	bool "Amazon silent ota backlight control"
+	default n
+	---help---
+		Enable Amazon silent ota backlight control
+
+endif # if AMAZON
+
+endmenu

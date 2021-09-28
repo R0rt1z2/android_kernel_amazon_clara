@@ -1,0 +1,7 @@
+
+config NETFLIX_CRASH_MONITOR
+	bool "Netflix Crash Monitor"
+	default n
+	help
+		Netflix Crash Monitor
+

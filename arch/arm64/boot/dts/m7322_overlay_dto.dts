@@ -1,0 +1,95 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+		fragment@0 {
+			   target = <&soc_m7322>;
+			   __overlay__ {
+					  android {
+						  fstab {
+									compatible = "android,fstab";
+									system {
+										compatible = "android,system";
+										dev = "/dev/block/platform/mstar_mci.0/by-name/system";
+										type = "ext4";
+										mnt_flags = "ro";
+										fsmgr_flags = "wait";
+									};
+									vendor {
+										compatible = "android,vendor";
+										dev = "/dev/block/platform/mstar_mci.0/by-name/vendor";
+										type = "ext4";
+										mnt_flags = "ro";
+										fsmgr_flags = "wait";
+									};
+							};
+					  };
+			   };
+		};
+		buf_tag {
+				/* heaptype: HEAP_TYPE_IOMMU = 0, HEAP_TYPE_CMA= 1,  HEAP_TYPE_NON_MMA = 2*/
+				/* miutype:  UMA_OR_MIU0 = 0, MIU_1 = 1 */
+				vdec_fb {
+						heaptype = <0>;
+						max_size = <0x0 0xec00000>;
+						miu = <0>;
+				};
+				vdec_es {
+						heaptype = <0>;
+						max_size = <0x0 0x01000000>;
+						miu = <0>;
+				};
+				xc_main {
+						heaptype = <0>;
+						max_size = <0x0 0x5800000>;
+						miu = <0>;
+				};
+				mali_gop_dma {
+						heaptype = <0>;
+						max_size = <0x0 0x5000000>;
+						normal_zone = <0>;
+				};
+				mali_gop {
+						heaptype = <0>;
+						max_size = <0x0 0x5000000>;
+						normal_zone = <1>;
+				};
+				xc_frc_pq {
+						heaptype = <0>;
+						max_size = <0x0 0xf00000>;
+						miu = <0>;
+				};
+				xc_frc_l {
+						heaptype = <0>;
+						max_size = <0x0 0x5a00000>;
+						miu = <0>;
+				};
+				img_frame {
+						heaptype = <0>;
+						max_size = <0x0 0x2000000>;
+						miu = <0>;
+				};
+				jpd_write {
+						heaptype = <0>;
+						max_size = <0x0 0x400000>;
+						miu = <0>;
+				};
+				directfb_frame0 {
+						heaptype = <0>;
+						max_size = <0x0 0x1200000>;
+						miu = <0>;
+				};
+				directfb_frame1 {
+						heaptype = <0>;
+						max_size = <0x0 0x1200000>;
+						miu = <0>;
+				};
+				xc_hdr {
+						heaptype = <0>;
+						max_size = <0x0 0x3000000>;
+						miu = <0>;
+				};
+		};
+};
+
+
